@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My love >>3</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="main-content">
+      <h1>I have surprise to you ...</h1>
+      <p id="title">💘🙊</p>
+      <div class="container">
+        <button class="btn">click here</button>
+      </div>
+
+      <div class="envelope">
+        <div class="flap"></div>
+        <div class="front"></div>
+        <div class="letter">
+          <p>brak 3la yes 🙂🫶🏼</p>
+        </div>
+      </div>
+      <div class="choices">
+        <button class="btn-1">Yes</button>
+        <button class="choices-btn-2">None</button>
+      </div>
+    </div>
+    <div class="final-screen">
+      <div class="heart-container">
+        <div class="heart"></div>
+        <p class="final-text"></p>
+      </div>
+    </div>
+    <script>
+      const btn = document.querySelector(".btn");
+      const envelope = document.querySelector(".envelope");
+      const choices = document.querySelector(".choices");
+
+      const noBtn = document.querySelector(".choices-btn-2");
+      const yesBtn = document.querySelector(".btn-1");
+
+      const letterText = document.querySelector(".letter p");
+
+      const mainContent = document.querySelector(".main-content");
+      const finalScreen = document.querySelector(".final-screen");
+      const finalText = document.querySelector(".final-text");
+
+      btn.onclick = function () {
+        envelope.classList.toggle("open");
+
+        if (envelope.classList.contains("open")) {
+          choices.style.opacity = "1";
+          choices.style.pointerEvents = "auto";
+        } else {
+          choices.style.opacity = "0";
+          choices.style.pointerEvents = "none";
+        }
+      };
+
+      noBtn.onclick = function () {
+        envelope.classList.remove("open");
+
+        setTimeout(function () {
+          letterText.textContent = "ti9 fiya  ❤️";
+          envelope.classList.add("open");
+        }, 800);
+      };
+
+      yesBtn.onclick = function () {
+        mainContent.style.display = "none";
+        finalScreen.style.display = "flex";
+
+        const message = `in the word, I have one favourite person, it's you 🫶🏼❤️
+في هذا العالم، أملك شخصاً مفضلاً واحداً، إنه أنت 💘🫶🏼`;
+        let i = 0;
+
+        const typing = setInterval(function () {
+          finalText.textContent += message[i];
+          i++;
+
+          if (i >= message.length) {
+            clearInterval(typing);
+
+            setTimeout(function () {
+              finalScreen.classList.add("show-heart");
+            }, 500);
+          }
+        }, 100);
+      };
+    </script>
+  </body>
+</html>
